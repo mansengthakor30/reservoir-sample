@@ -27,3 +27,10 @@ The trade-off: the reservoir is an array of length `k`, and every item after the
 The RNG is injectable. Pass a function returning a float in `[0, 1)` as the second argument to the `Reservoir` constructor or to `sampleIterable`; it defaults to `Math.random`. For deterministic tests, `makeLcg(seed)` builds a seeded linear-congruential generator. The exports are exactly: `Reservoir`, `sampleIterable`, `makeLcg`.
 
 Capacity `k` must be a positive integer; anything else throws `RangeError` at construction time.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
