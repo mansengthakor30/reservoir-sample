@@ -1,6 +1,6 @@
 {
   "name": "reservoir-sample",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "One-pass uniform picks from streams of any size.",
   "type": "module",
   "main": "src/index.js",
